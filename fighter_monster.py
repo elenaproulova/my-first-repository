@@ -5,12 +5,6 @@ class Weapon(ABC):
     def attack(self):
         pass
 
-    def __str__(self):
-        return f"{self.name}, возраст: {self.age}"
-
-    def __repr__(self):
-        return self.__str__()
-
 class Sword(Weapon):
     def attack(self):
         print(f"Боец наносит удар мечом.")
@@ -26,7 +20,11 @@ class Fighter():
         self.name = name
         self.weapon = weapon
 
-    def change_weapon(self):
+    def choose_weapon(self):
+        print(f"Боец {self.name} выбирает {self.weapon}")
+
+    def change_weapon(self, new_weapon):
+        self.weapon = new_weapon
         print(f"Боец {self.name} выбирает {self.weapon}")
 
     def fighter_attack(self):
@@ -35,6 +33,8 @@ class Fighter():
 
 sword = Sword()
 bow = Bow()
-fighter = Fighter("Peter", Sword())
-fighter.change_weapon()
+fighter = Fighter("Peter", sword)
+fighter.choose_weapon()
+fighter.fighter_attack()
+fighter.change_weapon(bow)
 fighter.fighter_attack()
