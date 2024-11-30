@@ -9,6 +9,12 @@ class Animal():
     def eat (self):
         print(f"{self.name} ест")
 
+    def __str__(self):
+        return f"{self.name}, возраст: {self.age}"
+
+    def __repr__(self):
+        return self.__str__()
+
 class Bird(Animal):
     def __init__(self, name, age):
         super().__init__(name,age)
@@ -51,7 +57,7 @@ class Zoo:
     def file_list(self):
         with open("zoo_list.txt", "w", encoding='utf-8') as file:
             file.write(str(self.animals))
-        with open("zoo_list.txt", "a") as file:
+        with open("zoo_list.txt", "a", encoding='utf-8') as file:
             file.write(str(self.employees))
 
 class Employee():
@@ -61,6 +67,12 @@ class Employee():
 
     def work(self,):
         print(f"{self.name} работает")
+
+    def __str__(self):
+        return f"{self.name}, возраст: {self.age}"
+
+    def __repr__(self):
+        return self.__str__()
 
 class ZooKeeper(Employee):
     def __init__(self, name, age):
